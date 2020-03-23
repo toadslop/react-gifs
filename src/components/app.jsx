@@ -1,20 +1,37 @@
 import React, { Component } from 'react';
 import SearchBar from './SearchBar';
 import Gif from './Gif';
+import GifList from './GifList';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      gifs: [],
+      selectedGifId: "a93jwI0wkWTQs"
+    };
+  }
+  
   render() {
-    return ( 
+    const gifs = [
+      { id: "4KkSbPnZ5Skec" },
+      { id: "sRFym5lssgcTFrMSac" }
+    ]
+
+    return (
       <div>
-        <div className = "left-scene">
+        <div className="left-scene">
           <SearchBar />
           <div className="selected-gif">
-            <Gif />
+            <Gif id={this.state.selectedGifId} />
           </div>
         </div>
-        <div className = "right-scene" ></div>
+        <div className="right-scene">
+          <GifList gifs={gifs} />
+        </div>
       </div>
-    )
+    );
   }
 }
 
