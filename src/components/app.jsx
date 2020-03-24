@@ -14,8 +14,6 @@ class App extends Component {
       gifs: [],
       selectedGifId: null
     };
-
-    this.search("homer thinking");
   }
 
   search = (query) => {
