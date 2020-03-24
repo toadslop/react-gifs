@@ -10,9 +10,10 @@ class SearchBar extends Component {
       focusedClasses: "form-control form-search focused"
     };
   }
- 
+
   handleChange = (event) => {
-    this.props.search(event.target.value);
+    const { search } = this.props;
+    search(event.target.value);
   }
 
   handleFocus = () => {
@@ -24,8 +25,9 @@ class SearchBar extends Component {
   }
 
   render() {
+    const { isFocused, focusedClasses, blurredClasses } = this.state;
     return (
-      <input type="text" className={this.state.isFocused ? this.state.focusedClasses : this.state.blurredClasses} onFocus={this.handleFocus} onBlur={this.handleBlur} onChange={this.handleChange} />
+      <input type="text" className={isFocused ? focusedClasses : blurredClasses} onFocus={this.handleFocus} onBlur={this.handleBlur} onChange={this.handleChange} />
     );
   }
 }
