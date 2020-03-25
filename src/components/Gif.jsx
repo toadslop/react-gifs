@@ -8,8 +8,6 @@ class Gif extends Component {
 
   handleClick = (event) => {
     const { setGif } = this.props;
-    console.log(event.target.id);
-    console.log(this.props);
     setGif(event.target.id);
   }
 
