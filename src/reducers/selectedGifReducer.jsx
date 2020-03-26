@@ -1,5 +1,4 @@
 const selectedGifReducer = (state, action) => {
-  console.log(action);
   if (state === undefined) {
     return "";
   }

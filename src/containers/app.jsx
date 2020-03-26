@@ -1,3 +1,4 @@
+/* eslint-disable react/prefer-stateless-function */
 /* eslint-disable react/jsx-no-comment-textnodes */
 // external imports
 import React, { Component } from 'react';
@@ -7,7 +8,7 @@ import { setSelectedGif } from '../actions';
 
 
 // import components and containers
-import SearchBar from '../components/SearchBar';
+import SearchBar from './SearchBar';
 import Gif from './Gif';
 import GifList from './GifList';
 
@@ -15,29 +16,18 @@ import GifList from './GifList';
 const giphy = require('giphy-api')('PhzwWN4ixg1m6c1Hato1rtKwSGuZjwOi');
 
 class App extends Component {
-  search = (query) => {
-    giphy.search({
-      q: query,
-      rating: 'g',
-      limit: 10
-    }, (error, result) => {
-      this.setState({
-        gifs: result.data,
-      });
-    });
-  }
-
   render() {
+    const { selectedGif } = this.props;
     return (
       <div>
         <div className="left-scene">
-          <SearchBar search={this.search} />
+          <SearchBar />
           <div className="selected-gif">
-            <Gif id={this.props.selectedGif} />
+            <Gif id={selectedGif} />
           </div>
         </div>
         <div className="right-scene">
-          <GifList setGif={this.setGif} />
+          <GifList />
         </div>
       </div>
     );

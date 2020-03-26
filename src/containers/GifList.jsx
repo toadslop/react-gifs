@@ -5,12 +5,7 @@ import { setGifs } from '../actions';
 import Gif from './Gif';
 
 class GifList extends Component {
-  componentDidMount() {
-    this.props.setGifs();
-  }
-
   render() {
-    console.log(this.props);
     const { gifs } = this.props;
     return (
       <div className="gif-list">
