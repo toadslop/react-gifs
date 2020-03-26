@@ -15,18 +15,6 @@ import GifList from './GifList';
 const giphy = require('giphy-api')('PhzwWN4ixg1m6c1Hato1rtKwSGuZjwOi');
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      selectedGifId: null
-    };
-  }
-
-  componentDidMount() {
-    // this.props.setSelectedGif("BBkKEBJkmFbTG");
-  }
-
   search = (query) => {
     giphy.search({
       q: query,
@@ -39,14 +27,7 @@ class App extends Component {
     });
   }
 
-  // setGif = (clickedGifId) => {
-  //   this.setState({
-  //     selectedGifId: clickedGifId
-  //   });
-  // }
-
   render() {
-    const { selectedGifId } = this.state;
     return (
       <div>
         <div className="left-scene">
