@@ -7,6 +7,7 @@ import { createStore, combineReducers } from 'redux';
 // internal imports
 import gifsReducer from './reducers/gifsReducer';
 import selectedGifReducer from './reducers/selectedGifReducer';
+import searchBarReducer from './reducers/searchBarReducer';
 import App from './containers/app';
 import '../assets/stylesheets/application.scss';
 
@@ -14,7 +15,8 @@ import '../assets/stylesheets/application.scss';
 const root = document.getElementById('root');
 const reducers = combineReducers({
   gifs: gifsReducer,
-  selectedGif: selectedGifReducer
+  selectedGif: selectedGifReducer,
+  isSearchBarFocused: searchBarReducer
 });
 
 if (root) {

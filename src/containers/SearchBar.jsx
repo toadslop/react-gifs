@@ -1,18 +1,14 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { setGifs } from '../actions';
+import { setGifs, focusSearchBar, blurSearchBar } from '../actions';
 
 const giphy = require('giphy-api')('PhzwWN4ixg1m6c1Hato1rtKwSGuZjwOi');
 
 class SearchBar extends Component {
-  focusedClasses = "form-control form-search focused"
-
   classes = "form-control form-search";
 
-  shouldComponentUpdate() {
-    return false;
-  }
+  focused = " focused"
 
   search = (query) => {
     giphy.search({
@@ -30,30 +26,31 @@ class SearchBar extends Component {
   }
 
   handleFocus = () => {
-    this.classes = this.focusedClasses;
+    this.props.focusSearchBar(true);
   }
 
   handleBlur = () => {
-    this.classes = this.blurredClasses;
+    this.props.blurSearchBar(false);
   }
 
   render() {
     return (
-      <input type="text" className={this.classes} onFocus={this.handleFocus} onBlur={this.handleBlur} onChange={this.handleChange} />
+      <input type="text" className={this.props.isSearchBarFocused ? this.classes + this.focused : this.classes} onFocus={this.handleFocus} onBlur={this.handleBlur} onChange={this.handleChange} />
     );
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(
-    { setGifs: setGifs },
+    { setGifs, focusSearchBar, blurSearchBar },
     dispatch
   );
 }
 
 function mapStateToProps(state) {
   return {
-    gifs: state.gifs
+    gifs: state.gifs,
+    isSearchBarFocused: state.isSearchBarFocused
   };
 }
 
