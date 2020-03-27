@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { setSelectedGif } from '../actions';
+import { setSelectedGif, setGifs } from '../actions';
 
 class Gif extends Component {
   handleClick = (event) => {
     this.props.setSelectedGif(event.target.id);
+    this.props.setGifs(this.props.gifs, event.target.id);
   }
 
   render() {
@@ -17,14 +18,15 @@ class Gif extends Component {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(
-    { setSelectedGif: setSelectedGif },
+    { setSelectedGif, setGifs },
     dispatch
   );
 }
 
 function mapStateToProps(state) {
   return {
-    selectedGif: state.selectedGif
+    selectedGif: state.selectedGif,
+    gifs: state.gifs
   };
 }
 

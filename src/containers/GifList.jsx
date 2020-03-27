@@ -17,7 +17,7 @@ class GifList extends Component {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(
-    { setGifs: setGifs },
+    { setGifs },
     dispatch
   );
 }

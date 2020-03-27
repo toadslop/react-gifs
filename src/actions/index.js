@@ -1,7 +1,7 @@
-export function setGifs(gifs) {
+export function setGifs(gifs, selectedGifId = null) {
   return {
     type: 'SET_GIFS',
-    payload: gifs
+    payload: (selectedGifId ? gifs.filter((value) => { return value.id !== selectedGifId; }) : gifs)
   };
 }
 

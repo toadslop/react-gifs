@@ -41,6 +41,7 @@ class SearchBar extends Component {
         onFocus={this.handleFocus}
         onBlur={this.handleBlur}
         onChange={this.handleChange}
+        placeholder="search for gifs!"
       />
     );
   }
