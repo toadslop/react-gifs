@@ -35,7 +35,13 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <input type="text" className={this.props.isSearchBarFocused ? this.classes + this.focused : this.classes} onFocus={this.handleFocus} onBlur={this.handleBlur} onChange={this.handleChange} />
+      <input
+        type="text"
+        className={this.props.isSearchBarFocused ? this.classes + this.focused : this.classes}
+        onFocus={this.handleFocus}
+        onBlur={this.handleBlur}
+        onChange={this.handleChange}
+      />
     );
   }
 }
