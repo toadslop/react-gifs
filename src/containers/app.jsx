@@ -23,7 +23,7 @@ class App extends Component {
         <div className="left-scene">
           <SearchBar />
           <div className="selected-gif">
-            <Gif id={selectedGif} />
+            { selectedGif ? <Gif id={selectedGif} /> : <h3>Search for a gifs then click one to display it here!</h3> }
           </div>
         </div>
         <div className="right-scene">
@@ -43,7 +43,8 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
   return {
-    selectedGif: state.selectedGif
+    selectedGif: state.selectedGif,
+    gifs: state.gifs
   };
 }
 
